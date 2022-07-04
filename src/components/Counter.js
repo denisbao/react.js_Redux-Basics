@@ -3,18 +3,20 @@ import { useSelector, useDispatch } from 'react-redux'
 import classes from './Counter.module.css'
 
 const Counter = () => {
-  // useSelector automaticly make a subscription to the redux store
-  // and will keep this component updated when the state eventualy changes
   const counter = useSelector(state => state.counter)
-
-  // useDispatch will dispatch an Action to the Redux store
   const dispatch = useDispatch()
 
-  const incrementHandler = () => {
+  function incrementHandler() {
     dispatch({ type: 'increment' })
   }
-  const decrementHandler = () => {
+  function decrementHandler() {
     dispatch({ type: 'decrement' })
+  }
+  function increaseHandler() {
+    dispatch({
+      type: 'increase',
+      amount: 5,
+    })
   }
   const toggleCounterHandler = () => {}
 
@@ -24,6 +26,7 @@ const Counter = () => {
       <div className={classes.value}>{counter}</div>
       <div>
         <button onClick={incrementHandler}>Increment</button>
+        <button onClick={increaseHandler}>Increase by 5</button>
         <button onClick={decrementHandler}>Decrement</button>
       </div>
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
