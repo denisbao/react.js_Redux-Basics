@@ -25,3 +25,7 @@
 .counter button {
   margin: 6px;
 }
+
+.config button {
+  width: 55%;
+}
